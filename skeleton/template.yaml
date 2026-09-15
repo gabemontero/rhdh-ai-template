@@ -244,11 +244,11 @@ spec:
                 modelServerDescription:
                   type: 'null'
                   # SED_LLM_SERVER_START
-                  description: Select a model server from the RHDH catalog to use with your application.
+                  description: Select a model from the RHDH catalog to use with your application.
                 catalogModel:
                   title: Model Server Entity
                   type: string
-                  ui:help: "The model server chosen from the model catalog."
+                  ui:help: "The model chosen from the model catalog."
                   ui:field: EntityPicker
                   ui:options:
                     allowedKinds: []
