@@ -398,7 +398,7 @@ spec:
           appRunCommand: "streamlit run whisper_client.py"
           modelServiceContainer: quay.io/redhat-ai-dev/whispercpp:1.8.0
           modelServicePort: 8001
-          customModelName: ${{ (steps['fetch-model-server-from-catalog'].output.entity.spec.models.default if steps['fetch-model-server-from-catalog'].output.entity.spec.models.default else steps['fetch-model-server-from-catalog'].output.entity.spec.models.available[0]) if parameters.modelServer === 'choose-from-the-catalog' else parameters.modelName }}
+          customModelName: ${{ (steps['fetch-model-server-from-catalog'].output.entity.spec.models.default or steps['fetch-model-server-from-catalog'].output.entity.spec.models.available[0]) if parameters.modelServer === 'choose-from-the-catalog' else parameters.modelName }}
           modelName: ggerganov/whisper.cpp
           modelSrc: https://huggingface.co/ggerganov/whisper.cpp
           modelServerName: ${{ parameters.modelServer }}

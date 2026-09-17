@@ -398,7 +398,7 @@ spec:
           appRunCommand: "streamlit run object_detection_client.py"
           modelServiceContainer: quay.io/redhat-ai-dev/object_detection_python:latest
           modelServicePort: 8000
-          customModelName: ${{ (steps['fetch-model-server-from-catalog'].output.entity.spec.models.default if steps['fetch-model-server-from-catalog'].output.entity.spec.models.default else steps['fetch-model-server-from-catalog'].output.entity.spec.models.available[0]) if parameters.modelServer === 'choose-from-the-catalog' else parameters.modelName }}
+          customModelName: ${{ (steps['fetch-model-server-from-catalog'].output.entity.spec.models.default or steps['fetch-model-server-from-catalog'].output.entity.spec.models.available[0]) if parameters.modelServer === 'choose-from-the-catalog' else parameters.modelName }}
           modelName: facebook/detr-resnet-101
           modelSrc: https://huggingface.co/facebook/detr-resnet-101
           modelServerName: ${{ parameters.modelServer }}
